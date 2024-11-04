@@ -62,7 +62,8 @@ def main():
         print("Error: No valid samplers selected. Please choose from:", ", ".join(all_samplers.keys()))
         sys.exit(1)
 
-    equality_checker = CheckerSampler(model="gpt-4-turbo-preview")
+    # use gpt-4-turbo via openrouter
+    equality_checker = CheckerSampler(model="openai/gpt-4-turbo")
     # ^^^ used for fuzzy matching, just for math
 
     def get_evals(eval_name):
