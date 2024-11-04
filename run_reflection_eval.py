@@ -27,20 +27,20 @@ def main():
 
     parser = argparse.ArgumentParser(description='Run evaluations on selected samplers and evals.')
     parser.add_argument('samplers', nargs='*', default=['reflection_70b'], help='List of samplers to run')
-    parser.add_argument('--evals', nargs='+', choices=['mmlu', 'humaneval', 'gpqa', 'gsm8k', 'math'], 
+    parser.add_argument('--evals', nargs='+', choices=['mmlu', 'humaneval', 'gpqa', 'gsm8k', 'math'],
                         default=['mmlu', 'humaneval', 'gpqa', 'gsm8k', 'math'],
                         help='List of evaluations to run')
     args = parser.parse_args()
 
     # init your client
     client = OpenAI(
-    base_url="http://0.0.0.0:5050/v1",
+    base_url="http://0.0.0.0:8888/v1",
     api_key="test",
     )
 
     all_samplers = {
-        "reflection_70b": ChatCompletionSampler(
-            model="glaiveai/Reflection-Llama-3.1-70B",
+        "tess_r1_70b": ChatCompletionSampler(
+            model="neurolattice/Tess-R1-Llama-3.1-70B",
             system_message=REFLECTION_SYSTEM_MESSAGE,
             client=client
         ),
